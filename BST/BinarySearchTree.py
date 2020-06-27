@@ -5,9 +5,9 @@ from BST.Node import Node
 class BinarySearchTree:
     def __init__(self):
         self.root = None
-        self.inOrderList = []
-        self.preOrderList = []
-        self.postOrderList = []
+        self.in_order_list = []
+        self.pre_order_list = []
+        self.post_order_list = []
 
     def insert(self, value):
         if self.root is None:
@@ -29,27 +29,27 @@ class BinarySearchTree:
         else:
             print("The value is already in the tree")
             return None
-    def findMin(self):
-        return self._findMin(self.root)
+    def find_min(self):
+        return self._find_min(self.root)
 
-    def _findMin(self, node):
+    def _find_min(self, node):
         if node is None:
             return None
         elif (node.left is None):
             return node
         else:
-            return self._findMin(node.left)
+            return self._find_min(node.left)
 
-    def findMax(self):
-        return self._findMax(self.root)
+    def find_max(self):
+        return self._find_max(self.root)
 
-    def _findMax(self, node):
+    def _find_max(self, node):
         if node is None:
             return None
         elif (node.right is None):
             return node
         else:
-            return self._findMax(node.right)
+            return self._find_max(node.right)
 
     def remove(self, value):
         self.root = self._remove(value, self.root)
@@ -62,7 +62,7 @@ class BinarySearchTree:
         elif value < node.value:
             node.left = self._remove(value, node.left)
         elif node.left is not None and node.right is not None:
-            node.value = self._findMin(node.right).value
+            node.value = self._find_min(node.right).value
             node.right = self._remove(node.value, node.right);
         else:
             if node.left is not None:
@@ -71,44 +71,44 @@ class BinarySearchTree:
                 node = node.right
         return node
 
-    def inOrder(self):
+    def in_order(self):
         if self.root is None:
             return None
         else:
-            self._inOrder(self.root)
+            self._in_order(self.root)
 
-    def _inOrder(self,root):
+    def _in_order(self,root):
         if root:
-            self._inOrder(root.left)
-            self.inOrderList.append(root.value)
+            self._in_order(root.left)
+            self.in_order_list.append(root.value)
             print(root.value)
-            self._inOrder(root.right)
+            self._in_order(root.right)
 
-    def postOrder(self):
+    def post_order(self):
         if self.root is None:
             return None
         else:
-            self._postOrder(self.root)
+            self._post_order(self.root)
 
-    def _postOrder(self, root):
+    def _post_order(self, root):
         if root:
-            self._postOrder(root.left)
-            self._postOrder(root.right)
+            self._post_order(root.left)
+            self._post_order(root.right)
             print(root.value)
-            self.postOrderList.append(root.value)
+            self.post_order_list.append(root.value)
 
-    def preOrder(self):
+    def pre_order(self):
         if self.root is None:
             return None
         else:
-            self._preOrder(self.root)
+            self._pre_order(self.root)
 
-    def _preOrder(self, root):
+    def _pre_order(self, root):
         if root:
             print(root.value)
-            self.preOrderList.append(root.value)
-            self._preOrder(root.left)
-            self._preOrder(root.right)
+            self.pre_order_list.append(root.value)
+            self._pre_order(root.left)
+            self._pre_order(root.right)
 
     def contains(self, value):
         return self._contains(value, self.root)
@@ -124,11 +124,11 @@ class BinarySearchTree:
             else:
                 return True
 
-    def getInOrderList(self):
-        return self.inOrderList
+    def get_in_order_list(self):
+        return self.in_order_list
 
-    def getPreOrderList(self):
-        return self.preOrderList
+    def get_pre_order_list(self):
+        return self.pre_order_list
 
-    def getPostOrderList(self):
-        return self.postOrderList
+    def get_post_order_list(self):
+        return self.post_order_list

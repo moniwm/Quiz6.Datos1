@@ -19,12 +19,12 @@ class Test(unittest.TestCase):
         self.assertEqual(self.tree.insert(77), None)
 
     def testFindMin(self):
-        self.assertEqual(self.tree.findMin().value, 1)
-        self.assertEqual(self.treeEmpty.findMin(), None)
+        self.assertEqual(self.tree.find_min().value, 1)
+        self.assertEqual(self.treeEmpty.find_min(), None)
 
     def testFindMax(self):
-        self.assertEqual(self.treeEmpty.findMax(), None)
-        self.assertEqual(self.tree.findMax().value, 86)
+        self.assertEqual(self.treeEmpty.find_max(), None)
+        self.assertEqual(self.tree.find_max().value, 86)
 
 
     def testRemove(self):
@@ -39,18 +39,18 @@ class Test(unittest.TestCase):
 
     def testInOrder(self):
         self.inOrderListExpected = [1,9, 14, 15,17,22,24,25,63,77,86]
-        self.tree.inOrder()
-        self.assertListEqual(self.tree.getInOrderList(), self.inOrderListExpected)
-        self.assertEqual(self.treeEmpty.inOrder(), None)
+        self.tree.in_order()
+        self.assertListEqual(self.tree.get_in_order_list(), self.inOrderListExpected)
+        self.assertEqual(self.treeEmpty.in_order(), None)
 
     def testPreOrder(self):
         self.preOrderListExpected = [17, 14, 9, 1, 15, 86, 77, 25, 22, 24, 63]
-        self.tree.preOrder()
-        self.assertListEqual(self.tree.getPreOrderList(), self.preOrderListExpected)
-        self.assertEqual(self.treeEmpty.preOrder(), None)
+        self.tree.pre_order()
+        self.assertListEqual(self.tree.get_pre_order_list(), self.preOrderListExpected)
+        self.assertEqual(self.treeEmpty.pre_order(), None)
 
     def testPostOrder(self):
         self.postOrderListExpected = [1,9,15,14,24,22,63,25,77,86,17]
-        self.tree.postOrder()
-        self.assertListEqual(self.tree.getPostOrderList(), self.postOrderListExpected)
-        self.assertEqual(self.treeEmpty.postOrder(), None)
+        self.tree.post_order()
+        self.assertListEqual(self.tree.get_post_order_list(), self.postOrderListExpected)
+        self.assertEqual(self.treeEmpty.post_order(), None)
