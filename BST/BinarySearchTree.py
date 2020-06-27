@@ -1,5 +1,6 @@
 from BST.Node import Node
 
+# Created by Monica Waterhouse Montoya
 
 class BinarySearchTree:
     def __init__(self):
@@ -39,6 +40,20 @@ class BinarySearchTree:
         else:
             return self._findMin(node.left)
 
+    def findMax(self):
+        if self.root is None:
+            return None
+        else:
+            return self._findMax(self.root)
+
+    def _findMax(self, node):
+        if node is None:
+            return None
+        elif (node.right is None):
+            return node
+        else:
+            return self._findMax(node.right)
+
     def remove(self, value):
         self.root = self._remove(value, self.root)
 
@@ -59,17 +74,15 @@ class BinarySearchTree:
                 node = node.right
         return node
 
+    def inOrder(self):
+        if self.root is None:
+            return None
+        else:
+            self._inOrder(self.root)
 
-    def printTree(self):
-        if self.root is not None:
-            self._printTree(self.root)
-
-    def _printTree(self, node):
-        if node is not None:
-            self._printTree(node.left)
-            print(str(node.value))
-            self._printTree(node.right)
-
-
-
-
+    def _inOrder(self,root):
+        if root:
+            self._inOrder(root.left)
+            print(root.value)
+            self._inOrder(root.right)
+    
