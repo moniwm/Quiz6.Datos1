@@ -14,16 +14,7 @@ bstTree.insert(29)
 bstTree.insert(45)
 bstTree.insert(87)
 
-bstTree.printTree()
-
-bstTree.remove(10)
-
-bstTree.printTree()
-
-bstTree.remove(7)
-bstTree.remove(19)
-
-bstTree.printTree()
+bstTree.inOrder()
 
 
 
