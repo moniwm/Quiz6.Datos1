@@ -15,7 +15,8 @@ bstTree.insert(45)
 bstTree.insert(87)
 
 bstTree.inOrder()
-
+bstTree.postOrder()
+bstTree.preOrder()
 
 
 

@@ -85,4 +85,27 @@ class BinarySearchTree:
             self._inOrder(root.left)
             print(root.value)
             self._inOrder(root.right)
-    
+
+    def postOrder(self):
+        if self.root is None:
+            return None
+        else:
+            self._postOrder(self.root)
+
+    def _postOrder(self, root):
+        if root:
+            self._postOrder(root.left)
+            self._postOrder(root.right)
+            print(root.value)
+
+    def preOrder(self):
+        if self.root is None:
+            return None
+        else:
+            self._preOrder(self.root)
+
+    def _preOrder(self, root):
+        if root:
+            print(root.value)
+            self._preOrder(root.left)
+            self._preOrder(root.right)
