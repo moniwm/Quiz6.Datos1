@@ -5,6 +5,9 @@ from BST.Node import Node
 class BinarySearchTree:
     def __init__(self):
         self.root = None
+        self.inOrderList = []
+        self.preOrderList = []
+        self.postOrderList = []
 
     def insert(self, value):
         if self.root is None:
@@ -25,12 +28,9 @@ class BinarySearchTree:
                 self._insert(value, node.right)
         else:
             print("The value is already in the tree")
-
-    def findMin(self):
-        if self.root is None:
             return None
-        else:
-            return self._findMin(self.root)
+    def findMin(self):
+        return self._findMin(self.root)
 
     def _findMin(self, node):
         if node is None:
@@ -41,10 +41,7 @@ class BinarySearchTree:
             return self._findMin(node.left)
 
     def findMax(self):
-        if self.root is None:
-            return None
-        else:
-            return self._findMax(self.root)
+        return self._findMax(self.root)
 
     def _findMax(self, node):
         if node is None:
@@ -60,12 +57,12 @@ class BinarySearchTree:
     def _remove(self, value, node):
         if node is None:
             return None
-        if value < node.value:
-            node.left = self._remove(value, node.left)
-        elif value > node.value:
+        if value > node.value:
             node.right = self._remove(value, node.right)
+        elif value < node.value:
+            node.left = self._remove(value, node.left)
         elif node.left is not None and node.right is not None:
-            node.value = self._findMin(node.right)
+            node.value = self._findMin(node.right).value
             node.right = self._remove(node.value, node.right);
         else:
             if node.left is not None:
@@ -83,6 +80,7 @@ class BinarySearchTree:
     def _inOrder(self,root):
         if root:
             self._inOrder(root.left)
+            self.inOrderList.append(root.value)
             print(root.value)
             self._inOrder(root.right)
 
@@ -97,6 +95,7 @@ class BinarySearchTree:
             self._postOrder(root.left)
             self._postOrder(root.right)
             print(root.value)
+            self.postOrderList.append(root.value)
 
     def preOrder(self):
         if self.root is None:
@@ -107,5 +106,29 @@ class BinarySearchTree:
     def _preOrder(self, root):
         if root:
             print(root.value)
+            self.preOrderList.append(root.value)
             self._preOrder(root.left)
             self._preOrder(root.right)
+
+    def contains(self, value):
+        return self._contains(value, self.root)
+
+    def _contains(self, value, node):
+        if node is None:
+            return False
+        else:
+            if value < node.value:
+                return self._contains(value, node.left)
+            elif value > node.value:
+                return self._contains(value, node.right)
+            else:
+                return True
+
+    def getInOrderList(self):
+        return self.inOrderList
+
+    def getPreOrderList(self):
+        return self.preOrderList
+
+    def getPostOrderList(self):
+        return self.postOrderList
